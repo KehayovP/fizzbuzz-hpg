@@ -27,4 +27,26 @@ public class RuleEngineTests
             consoleOutput.WriteToConsole("3");
         });
     }
+    
+    [Fact]
+    public void RunRange_AppliesRulesInAscendingOrderAndConcatenatesTokens()
+    {
+        // Arrange
+        var lateRule = Substitute.For<ITokenRule>();
+        lateRule.Order.Returns(20);
+        lateRule.GetToken(Arg.Any<int>()).Returns("B");
+
+        var earlyRule = Substitute.For<ITokenRule>();
+        earlyRule.Order.Returns(10);
+        earlyRule.GetToken(Arg.Any<int>()).Returns("A");
+
+        var output = Substitute.For<IFizzBuzzConsoleOutput>();
+        var engine = new RuleEngine(new[] { lateRule, earlyRule }, output);
+
+        // Act
+        engine.RunRange(1, 1);
+
+        // Assert: "A" should come before "B"
+        output.Received(1).WriteToConsole("AB");
+    }
 }
