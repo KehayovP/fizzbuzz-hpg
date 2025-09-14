@@ -61,6 +61,6 @@ public class RuleEngineTests
 
         // Act / Assert
         var exception = Assert.Throws<ArgumentOutOfRangeException>(() => engine.RunRange(5, 1));
-        Assert.Equal("End must be >= start.", exception.Message);
+        Assert.Equal("End must be >= start. (Parameter 'end')", exception.Message);
     }
 }

@@ -15,6 +15,11 @@ public class RuleEngine
 
     public void RunRange(int start, int end)
     {
+        if (end < start)
+        {
+            throw new ArgumentOutOfRangeException(nameof(end), "End must be >= start.");
+        }
+
         for (int i = start; i <= end; i++)
         {
             _output.WriteToConsole(Evaluate(i));
