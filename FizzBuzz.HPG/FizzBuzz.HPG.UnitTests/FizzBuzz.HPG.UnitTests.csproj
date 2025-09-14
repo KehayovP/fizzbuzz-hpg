@@ -21,4 +21,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FizzBuzz.HPG\FizzBuzz.HPG.csproj" />
+    </ItemGroup>
+
 </Project>

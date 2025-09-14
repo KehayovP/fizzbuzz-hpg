@@ -1,3 +1,4 @@
+using FizzBuzz.HPG.Abstractions;
 using NSubstitute;
 
 namespace FizzBuzz.HPG.UnitTests;
@@ -21,9 +22,9 @@ public class RuleEngineTests
         // Assert
         Received.InOrder(() =>
         {
-            consoleOutput.WriteToConsole(1);
-            consoleOutput.WriteToConsole(2);
-            consoleOutput.WriteToConsole(3);
+            consoleOutput.WriteToConsole("1");
+            consoleOutput.WriteToConsole("2");
+            consoleOutput.WriteToConsole("3");
         });
     }
 }
