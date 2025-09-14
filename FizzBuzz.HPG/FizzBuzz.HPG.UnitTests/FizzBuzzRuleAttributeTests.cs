@@ -11,4 +11,14 @@ public class FizzBuzzRuleAttributeTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => new FizzBuzzRuleAttribute(divisor, "X", 0));
     }
+    
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData(" ")]
+    public void Ctor_WithInvalidToken_Throws(string token)
+    {
+        var exception = Assert.Throws<ArgumentException>(() => new FizzBuzzRuleAttribute(3, token, 0));
+        Assert.Equal("Token required", exception.Message);
+    }
 }
