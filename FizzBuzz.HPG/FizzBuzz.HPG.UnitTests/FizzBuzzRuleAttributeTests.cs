@@ -1,3 +1,4 @@
+using FizzBuzz.HPG.Abstractions;
 using FizzBuzz.HPG.Attributes;
 
 namespace FizzBuzz.HPG.UnitTests;
@@ -20,5 +21,24 @@ public class FizzBuzzRuleAttributeTests
     {
         var exception = Assert.Throws<ArgumentException>(() => new FizzBuzzRuleAttribute(3, token, 0));
         Assert.Equal("Token required (Parameter 'token')", exception.Message);
+    }
+    
+    [Fact]
+    public void ToRule_ReturnsDivisibleRuleWithSameProperties()
+    {
+        // Arrange
+        var attr = new FizzBuzzRuleAttribute(5, "Buzz", 20);
+
+        // Act
+        var method = typeof(FizzBuzzRuleAttribute)
+            .GetMethod("ToRule", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var rule = method!.Invoke(attr, null) as ITokenRule;
+
+        // Assert
+        Assert.NotNull(rule);
+        var divRule = Assert.IsType<DivisibleRule>(rule);
+        Assert.Equal(5, divRule.Divisor);
+        Assert.Equal("Buzz", divRule.Token);
+        Assert.Equal(20, divRule.Order);
     }
 }
