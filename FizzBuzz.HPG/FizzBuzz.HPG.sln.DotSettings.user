@@ -4,5 +4,6 @@
     &lt;TestId&gt;xUnit::A06E79BD-104C-4EC7-BBA7-D91EF20F32DA::net8.0::FizzBuzz.HPG.UnitTests.RuleEngineTests.RunRange_WritesNumberWhenNoRuleMatches&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::A06E79BD-104C-4EC7-BBA7-D91EF20F32DA::net8.0::FizzBuzz.HPG.UnitTests.RuleEngineTests.RunRange_AppliesRulesInAscendingOrderAndConcatenatesTokens&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::A06E79BD-104C-4EC7-BBA7-D91EF20F32DA::net8.0::FizzBuzz.HPG.UnitTests.RuleEngineTests.RunRange_ThrowsWhenEndIsLessThanStart&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A06E79BD-104C-4EC7-BBA7-D91EF20F32DA::net8.0::FizzBuzz.HPG.UnitTests.DivisibleRuleTests.GetToken_WhenNumberIsDivisibleByDivisor_ReturnsToken&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
