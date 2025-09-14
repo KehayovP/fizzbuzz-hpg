@@ -1,3 +1,5 @@
+using FizzBuzz.HPG.Attributes;
+
 namespace FizzBuzz.HPG.UnitTests;
 
 public class FizzBuzzRuleAttributeTests
