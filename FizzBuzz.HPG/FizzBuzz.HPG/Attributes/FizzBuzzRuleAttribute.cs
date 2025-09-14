@@ -1,5 +1,8 @@
+using FizzBuzz.HPG.Abstractions;
+
 namespace FizzBuzz.HPG.Attributes;
 
+[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
 public class FizzBuzzRuleAttribute : Attribute
 {
     public int Divisor { get; }
@@ -22,4 +25,10 @@ public class FizzBuzzRuleAttribute : Attribute
         Token = token;
         Order = order;
     }
+    
+    public ITokenRule ToRule()
+    {
+        return new DivisibleRule(Divisor, Token, Order);
+    }
+
 }

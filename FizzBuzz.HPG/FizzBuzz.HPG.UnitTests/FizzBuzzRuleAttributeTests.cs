@@ -31,7 +31,7 @@ public class FizzBuzzRuleAttributeTests
 
         // Act
         var method = typeof(FizzBuzzRuleAttribute)
-            .GetMethod("ToRule", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            .GetMethod("ToRule");
         var rule = method!.Invoke(attr, null) as ITokenRule;
 
         // Assert
