@@ -13,6 +13,11 @@ public class FizzBuzzRuleAttribute : Attribute
             throw new ArgumentOutOfRangeException(nameof(divisor));
         }
 
+        if (string.IsNullOrWhiteSpace(token))
+        {
+            throw new ArgumentException("Token required", nameof(token));
+        }
+
         Divisor = divisor;
         Token = token;
         Order = order;

@@ -19,6 +19,6 @@ public class FizzBuzzRuleAttributeTests
     public void Ctor_WithInvalidToken_Throws(string token)
     {
         var exception = Assert.Throws<ArgumentException>(() => new FizzBuzzRuleAttribute(3, token, 0));
-        Assert.Equal("Token required", exception.Message);
+        Assert.Equal("Token required (Parameter 'token')", exception.Message);
     }
 }
