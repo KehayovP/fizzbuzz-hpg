@@ -49,4 +49,18 @@ public class RuleEngineTests
         // Assert: "A" should come before "B"
         output.Received(1).WriteToConsole("AB");
     }
+    
+    [Fact]
+    public void RunRange_ThrowsWhenEndIsLessThanStart()
+    {
+        // Arrange
+        var rule = Substitute.For<ITokenRule>();
+        rule.Order.Returns(0);
+        var output = Substitute.For<IFizzBuzzConsoleOutput>();
+        var engine = new RuleEngine(new[] { rule }, output);
+
+        // Act / Assert
+        var exception = Assert.Throws<ArgumentOutOfRangeException>(() => engine.RunRange(5, 1));
+        Assert.Equal("End must be >= start.", exception.Message);
+    }
 }
