@@ -9,7 +9,7 @@ public class RuleEngine
 
     public RuleEngine(IEnumerable<ITokenRule> rules, IFizzBuzzConsoleOutput output)
     {
-        _rulesInOrder = rules.ToArray();
+        _rulesInOrder = rules.OrderBy(r => r.Order).ToArray();
         _output = output;
     }
 
@@ -17,7 +17,24 @@ public class RuleEngine
     {
         for (int i = start; i <= end; i++)
         {
-            _output.WriteToConsole(i.ToString());
+            _output.WriteToConsole(Evaluate(i));
         }
+    }
+    
+    private string Evaluate(int number)
+    {
+        var hadAny = false;
+        var builder = new System.Text.StringBuilder();
+        foreach (var rule in _rulesInOrder)
+        {
+            var token = rule.GetToken(number);
+            if (!string.IsNullOrEmpty(token))
+            {
+                hadAny = true;
+                builder.Append(token);
+            }
+        }
+
+        return hadAny ? builder.ToString() : number.ToString();
     }
 }
