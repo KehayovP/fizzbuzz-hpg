@@ -14,4 +14,17 @@ public class DivisibleRuleTests
         // Assert
         Assert.Equal("Fizz", result);
     }
+    
+    [Fact]
+    public void GetToken_WhenNumberIsNotDivisibleByDivisor_ReturnsNull()
+    {
+        // Arrange
+        var rule = new DivisibleRule(divisor: 5, token: "Buzz", order: 20);
+
+        // Act
+        var result = rule.GetToken(6);
+
+        // Assert
+        Assert.Null(result);
+    }
 }
